@@ -1,0 +1,25 @@
+{
+	"name": "CSS clamp generator",
+	"short_name": "CSS clamp generator",
+	"description": "Linear scaling for fluid viewport-based values for modern typography, spacing, etc. with CSS `clamp()`",
+	"id": "/",
+	"start_url": "/?edg_pwa_home=1",
+	"theme_color": "oklch(100% 0 0)",
+	"background_color": "oklch(100% 0 0)",
+	"orientation": "any",
+	"display": "minimal-ui",
+	"icons": [
+		{
+			"src": "/assets/media/favicons/web-app/192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/assets/media/favicons/web-app/512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	]
+}

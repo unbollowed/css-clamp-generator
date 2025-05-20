@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CSS clamp generator</title>
+	<meta name="description" content="Linear scaling for fluid viewport-based values for modern typography, spacing, etc. with CSS `clamp()`">
+	<meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<link rel="canonical" href="https://css-clamp-generator.com">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="CSS clamp generator">
+	<meta property="og:description" content="Linear scaling for fluid viewport-based values for modern typography, spacing, etc. with CSS `clamp()`">
+	<meta property="og:url" content="https://css-clamp-generator.com">
+	<meta property="og:site_name" content="CSS clamp generator">
+	<meta property="og:image" content="https://css-clamp-generator.com/assets/media/og-thumbnail.avif">
+	<meta property="og:image:type" content="image/avif">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:image:alt" content="Linear scaling for fluid viewport-based values for modern typography, spacing, etc. with CSS `clamp()`">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="CSS clamp generator">
+	<meta name="twitter:description" content="Linear scaling for fluid viewport-based values for modern typography, spacing, etc. with CSS `clamp()`">
+	<meta name="twitter:image" content="https://css-clamp-generator.com/assets/media/og-thumbnail.avif">
+	<meta name="theme-color" content="oklch(100% 0 0)" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="oklch(14.05% .004 285.82)" media="(prefers-color-scheme: dark)">
+	<link rel="icon" href="https://css-clamp-generator.com/assets/media/favicons/32x32-light-mode.png" sizes="32x32" media="(prefers-color-scheme: light)">
+	<link rel="icon" href="https://css-clamp-generator.com/assets/media/favicons/32x32-dark-mode.png" sizes="32x32" media="(prefers-color-scheme: dark)">
+	<link rel="apple-touch-icon" href="https://css-clamp-generator.com/assets/media/favicons/web-app/180x180.png" sizes="180x180">
+	<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials">
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<script src="/assets/js/main.js" type="module"></script>
+</head>
+<body>
+	<main>
+		<section class="section-spacing--sm" aria-labelledby="title">
+			<div class="wrapper flow" data-spacing="spacing-sm">
+				<div class="flow text-center-mobile-up" data-spacing="xs">
+					<h1 id="title" class="heading">CSS clamp generator</h1>
+					<p class="text-xl text-balance"><a href="/assets/media/linear-scaling-fluid-viewport-based-values-modern-typography-spacing-with-css-clamp.avif" target="_blank" class="link">Linear scaling</a> for fluid viewport-based values for modern typography, spacing, etc. with CSS <code>clamp()</code></p>
+				</div>
+				<div class="form">
+					<div class="form__row">
+						<div>
+							<div class="form__column">
+								<label for="min-value" class="label">Minimum value <span class="label-detail">(rem)</span></label>
+								<input id="min-value" class="input" type="text" inputmode="decimal" spellcheck="false" data-initial-value="1.5">
+							</div>
+							<div class="form__column">
+								<label for="max-value" class="label">Maximum value <span class="label-detail">(rem)</span></label>
+								<input id="max-value" class="input" type="text" inputmode="decimal" spellcheck="false" data-initial-value="2.25">
+							</div>
+							<div class="form__column">
+								<label for="root-font-size" class="label">Root font size <span class="label-detail">(px)</span></label>
+								<input id="root-font-size" class="input" type="text" inputmode="numeric" spellcheck="false" data-initial-value="16">
+							</div>
+						</div>
+						<div>
+							<div class="form__column">
+								<label for="min-value-end" class="label">Viewport start width <span class="label-detail">(px)</span></label>
+								<input id="min-value-end" class="input" type="text" inputmode="numeric" spellcheck="false" data-initial-value="478">
+							</div>
+							<div class="form__column">
+								<label for="max-value-start" class="label">Viewport end width <span class="label-detail">(px)</span></label>
+								<input id="max-value-start" class="input" type="text" inputmode="numeric" spellcheck="false" data-initial-value="1200">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="output">
+						<output for="min-value max-value min-value-end max-value-start" class="output__text"><pre></pre></output>
+						<div class="output__actions">
+							<button class="output__action" data-copy-output aria-label="Copy output">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+									<path d="M362.308-260.001q-30.308 0-51.307-21-21-21-21-51.308v-455.382q0-30.308 21-51.308 20.999-21 51.307-21h335.383q30.307 0 51.307 21 21 21 21 51.308v455.382q0 30.308-21 51.308t-51.307 21H362.308Zm0-59.999h335.383q4.615 0 8.462-3.846 3.846-3.847 3.846-8.463v-455.382q0-4.616-3.846-8.463-3.847-3.846-8.462-3.846H362.308q-4.616 0-8.462 3.846-3.847 3.847-3.847 8.463v455.382q0 4.616 3.847 8.463 3.846 3.846 8.462 3.846ZM222.309-120.003q-30.307 0-51.307-21-21-21-21-51.307v-515.381h59.999v515.381q0 4.616 3.846 8.462 3.847 3.847 8.462 3.847h395.382v59.998H222.309ZM349.999-320V-800-320Z"></path>
+								</svg>
+							</button>
+							<a href="#" target="_blank" class="output__action" data-check-formula aria-label="Check formula">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+									<path d="M212.309-140.001q-30.308 0-51.308-21t-21-51.308v-535.382q0-30.308 21-51.308t51.308-21h252.305V-760H212.309q-4.616 0-8.463 3.846-3.846 3.847-3.846 8.463v535.382q0 4.616 3.846 8.463 3.847 3.846 8.463 3.846h535.382q4.616 0 8.463-3.846 3.846-3.847 3.846-8.463v-252.305h59.999v252.305q0 30.308-21 51.308t-51.308 21H212.309Zm176.46-206.615-42.153-42.153L717.847-760H560v-59.999h259.999V-560H760v-157.847L388.769-346.616Z"></path>
+								</svg>
+							</a>
+							<button class="output__action" data-reset-inputs aria-label="Reset inputs">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+									<path d="M481.539-180.001q-125.625 0-212.812-87.17-87.187-87.169-87.187-212.768t87.187-212.829q87.187-87.231 212.812-87.231 70.154 0 132.769 31.193 62.615 31.192 104.153 88.039v-119.232h59.999v244.613H533.847v-59.998h157.999q-31.615-57.923-87.692-91.27Q548.077-720 481.539-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h63.229q-27.231 97.922-107.269 158.961-80.038 61.038-181.96 61.038Z"></path>
+								</svg>
+							</button>
+						</div>
+					</div>
+					<div class="options">
+						<div>
+							<input id="option-swap-values" type="checkbox">
+							<label for="option-swap-values" class="checkbox">
+								<div class="checkbox__box"></div>
+								<div class="checkbox__text">Swap values (maximum value starts at smaller viewport)</div>
+							</label>
+						</div>
+						<div>
+							<input id="option-add-calc" type="checkbox">
+							<label for="option-add-calc" class="checkbox">
+								<div class="checkbox__box"></div>
+								<div class="checkbox__text">Add nested <code>calc()</code></div>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<div class="footer wrapper text-center-mobile-up">
+			<p><small>Tool created by <a href="https://blog.edgarbollow.com/?utm_source=website-project_css-clamp-generator.com&utm_medium=referral&utm_content=footer-credit&utm_campaign=blog-promotion" target="_blank" rel="me external" class="link">Edgar Bollow</a></small></p>
+		</div>
+	</footer>
+</body>
+</html>

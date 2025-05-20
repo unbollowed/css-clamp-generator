@@ -1,0 +1,176 @@
+#region prepare modules
+RewriteEngine On
+RewriteBase /
+GeoIPEnable On
+#endregion prepare modules
+
+
+#region environment variables
+RewriteCond %{HTTPS} ^(on|1)$ [NC,OR]
+RewriteCond %{SERVER_PORT} ^443$
+RewriteRule ^(.*)$ - [E=EDG_IS_HTTPS:1]
+
+RewriteCond %{ENV:EDG_IS_HTTPS} ^1$
+RewriteRule ^(.*)$ - [E=EDG_URL_SCHEME:https://]
+RewriteCond %{ENV:EDG_IS_HTTPS} !^1$
+RewriteRule ^(.*)$ - [E=EDG_URL_SCHEME:http://]
+#endregion environment variables
+
+
+#region enforce https
+RewriteCond %{ENV:EDG_IS_HTTPS} !^1$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+#endregion enforce https
+
+
+#region enforce non-www
+RewriteCond %{HTTP_HOST} ^www.(.+)$
+RewriteRule ^(.*)$ %{ENV:EDG_URL_SCHEME}%1/$1 [R=301,L]
+#endregion enforce non-www
+
+
+#region deny access
+#region user agents
+RewriteCond %{HTTP_USER_AGENT} (8legs|ahrefs|aspiegel|blex|dot|maui|mj12|nimbostratus|petal|scrapy|semrush|seznam|sogou)((-|_)?bot)? [NC]
+RewriteRule ^(.*)$ - [F,L]
+#endregion user agents
+
+
+#region referrers
+RewriteCond %{HTTP_REFERER} ^http(s)?://((.+?).)?best-seo-offer.com(/|$) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://((.+?).)?buttons-for-website.com(/|$) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://((.+?).)?darodar.com(/|$) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://((.+?).)?semalt.com(/|$) [NC,OR]
+RewriteCond %{HTTP_REFERER} ^http(s)?://((.+?).)?success-seo.com(/|$) [NC]
+RewriteRule ^(.*)$ - [F,L]
+#endregion referrers
+
+
+#region request methods
+RewriteCond %{REQUEST_METHOD} ^trace$ [NC]
+RewriteRule ^(.*)$ - [R=405,L]
+#endregion request methods
+
+
+#region files
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule (^|/)\. - [F,L]
+#endregion files
+#endregion deny access
+
+
+#region general
+Options -Indexes -MultiViews
+ServerSignature Off
+FileETag None
+#endregion general
+
+
+#region redirects
+#region favicons
+RewriteRule ^(favicon.ico|apple-touch-icon.png)$ - [R=204,L]
+#endregion favicons
+#endregion redirects
+
+
+#region optimization
+#region mime types
+AddType text/html html htm
+AddType text/css css
+AddType text/javascript js
+AddType application/wasm wasm
+AddType application/json json
+AddType text/plain txt text
+AddType text/markdown md markdown
+AddType text/vtt vtt
+AddType text/calendar ics
+AddType text/csv csv
+AddType text/vcard vcf vcard
+AddType application/pdf pdf
+AddType application/zip zip
+
+AddType image/jpeg jpg jpeg jpe
+AddType image/png png
+AddType image/apng apng
+AddType image/gif gif
+AddType image/webp webp
+AddType image/avif avif
+AddType image/avif-sequence avifs
+AddType image/svg+xml svg svgz
+
+AddType video/mp4 mp4
+AddType video/webm webm
+
+AddType audio/mpeg mp3
+AddType audio/wav wav wave
+AddType audio/aac aac
+AddType audio/flac flac
+
+AddType font/ttf ttf
+AddType font/woff woff
+AddType font/woff2 woff2
+#endregion mime types
+
+
+#region charset
+AddDefaultCharset utf-8
+AddCharset utf-8 css js json md markdown vtt ics csv vcf vcard svg svgz
+#endregion charset
+
+
+#region compression
+AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/javascript application/json text/plain text/markdown text/vtt text/calendar text/csv text/vcard image/svg+xml
+#endregion compression
+
+
+#region caching
+ExpiresActive On
+ExpiresDefault "now 0 seconds"
+
+ExpiresByType text/css "now 2 years"
+ExpiresByType text/javascript "now 2 years"
+
+ExpiresByType image/jpeg "now 2 years"
+ExpiresByType image/png "now 2 years"
+ExpiresByType image/apng "now 2 years"
+ExpiresByType image/gif "now 2 years"
+ExpiresByType image/webp "now 2 years"
+ExpiresByType image/avif "now 2 years"
+ExpiresByType image/avif-sequence "now 2 years"
+ExpiresByType image/svg+xml "now 2 years"
+
+ExpiresByType video/mp4 "now 2 years"
+ExpiresByType video/webm "now 2 years"
+
+ExpiresByType audio/mpeg "now 2 years"
+ExpiresByType audio/wav "now 2 years"
+ExpiresByType audio/aac "now 2 years"
+ExpiresByType audio/flac "now 2 years"
+
+ExpiresByType font/ttf "now 2 years"
+ExpiresByType font/woff "now 2 years"
+ExpiresByType font/woff2 "now 2 years"
+#endregion caching
+#endregion optimization
+
+
+#region headers
+#region security
+Header always unset X-Powered-By
+Header always unset X-Redirect-By
+
+Header set Referrer-Policy "same-origin"
+Header set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; upgrade-insecure-requests; script-src 'self'"
+Header set Permissions-Policy "accelerometer=(), bluetooth=(), camera=(), clipboard-read=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), magnetometer=(), microphone=(), payment=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()"
+Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+Header set X-Content-Type-Options "nosniff"
+#endregion security
+#endregion headers
+
+
+#region intercept requests
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.html [L]
+#endregion intercept requests
