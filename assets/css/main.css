@@ -78,7 +78,7 @@ body {
 	line-height: var(--leading-lg);
 	overflow-wrap: break-word;
 	text-wrap: pretty;
-	text-underline-offset: .375em;
+	text-underline-offset: .125em;
 	text-rendering: optimizeSpeed;
 	font-smooth: always;
 	-webkit-font-smoothing: antialiased;
@@ -234,6 +234,7 @@ input[type="checkbox"] {
 	color: oklch(var(--color-primary));
 	font-weight: 500;
 	text-decoration: underline;
+	text-decoration-thickness: clamp(1px, .0625em, .0625em);
 	transition: var(--duration-short);
 	transition-property: color;
 }
